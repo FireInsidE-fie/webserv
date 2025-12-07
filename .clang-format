@@ -1,0 +1,10 @@
+Language: Cpp
+BasedOnStyle: Google
+ColumnLimit: 100
+IndentWidth: 4
+AccessModifierOffset: -4
+BreakBeforeBraces: Attach
+AlignConsecutiveDeclarations: true      # Align variables in same column
+AllowShortFunctionsOnASingleLine: Empty
+DerivePointerAlignment: false
+PointerAlignment: Left
