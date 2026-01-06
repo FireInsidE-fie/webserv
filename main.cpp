@@ -4,6 +4,7 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 
+#include <cstdio>
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
@@ -15,9 +16,10 @@ int main() {
     memset(&hints, 0, sizeof(hints));
     hints.ai_family = AF_INET;
     hints.ai_socktype = SOCK_STREAM;
+    // hints.ai_flags = AI_PASSIVE;
 
     int status;
-    if ((status = getaddrinfo("tryhackme.org", NULL, &hints, &results)) != 0) {
+    if ((status = getaddrinfo("google.com", "http", &hints, &results)) != 0) {
         std::clog << "[!] - getaddrinfo failed with message " << gai_strerror(status) << std::endl;
         ;
         exit(1);
@@ -29,6 +31,13 @@ int main() {
         inet_ntop(results->ai_family, &ipv4->sin_addr, ipstr, sizeof(ipstr));
         std::clog << ipstr << std::endl;
     }
+    // Create the main socket
+    int s = socket(results->ai_family, results->ai_socktype, results->ai_protocol);
+    if (s == -1) {
+        perror("[!] - socket failed");
+        exit(1);
+    }
+
     freeaddrinfo(results);
     return 0;
 }
