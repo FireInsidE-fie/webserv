@@ -55,12 +55,15 @@ int main() {
     }
 
     // Accept an incoming connection
-    int new_s = accept(s, results->ai_addr, &results->ai_addrlen);
+    struct sockaddr_storage their_addr;
+    socklen_t               addr_size = sizeof(their_addr);
+    int                     new_s = accept(s, (struct sockaddr*)&their_addr, &addr_size);
     if (new_s < 0) {
         perror("[!] - accept failed");
         exit(1);
     }
 
+    // Receive and print all bytes
     char    buf[10];
     ssize_t size_received;
     memset(buf, 0, sizeof(buf));
@@ -71,5 +74,7 @@ int main() {
     std::clog << "\n[!] - recv exited with " << size_received << std::endl;
     if (size_received < 0) perror("[!] - recv failed");
     freeaddrinfo(results);
+    close(new_s);
+    close(s);
     return 0;
 }
