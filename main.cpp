@@ -49,6 +49,8 @@ int main() {
         perror("[!] - bind failed");
         exit(1);
     }
+    // Once the socket is bound, we don't have to use the results addrinfo anymore
+    freeaddrinfo(results);
 
     // Listen on port 80 using the newly-bound socket (10 connections at a time max)
     if (listen(s, 10) != 0) {
@@ -79,7 +81,6 @@ int main() {
     }
     std::clog << "\n[!] - recv exited with " << size_received << std::endl;
     if (size_received < 0) perror("[!] - recv failed");
-    freeaddrinfo(results);
     close(new_s);
     close(s);
     return 0;
