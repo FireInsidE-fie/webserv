@@ -4,11 +4,13 @@ CXXFLAGS	=	-Wall -Wextra -Wpedantic -Weffc++ -Wconversion -Wsign-conversion -Wer
 RM			=	rm
 RMFLAGS		=	-f
 
-CFILES		=	main.cpp \
+SRCDIR		=	src
+CFILES		=	$(SRCDIR)/main.cpp \
 
 OBJS		=	$(CFILES:.cpp=.o)
 
-IFILES		=
+INCLDIR		=	include
+IFILES		=	
 
 VALGRIND	=	valgrind
 VALFLAGS	=	--leak-check=full --show-leak-kinds=all

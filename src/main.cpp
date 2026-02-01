@@ -25,7 +25,6 @@ int main() {
     int status;
     if ((status = getaddrinfo(NULL, "8080", &hints, &results)) != 0) {
         std::clog << "[!] - getaddrinfo failed with message " << gai_strerror(status) << std::endl;
-        ;
         exit(1);
     }
 
