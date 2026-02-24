@@ -6,7 +6,7 @@
 #include "HTTP_Message.hpp"
 #include "config.hpp"
 
-class Response : virtual public HTTP_Message {
+class Response : public HTTP_Message {
 public:
     Response();
     ~Response();

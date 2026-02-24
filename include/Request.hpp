@@ -11,7 +11,7 @@ enum Status_Parsing { EMPTY, REQUEST_LINE, HEADERS, BODY, PARSED };
 /**
  * @brief Represents a request issued by an active connection.
  */
-class Request : virtual public HTTP_Message {
+class Request : public HTTP_Message {
 public:
     Request();
     Request(const Config_Location* const, HTTP_Method);
