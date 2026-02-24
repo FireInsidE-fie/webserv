@@ -24,9 +24,11 @@ private:
     Response _response;
 
     int _socket;
-    // TODO Read and write buffers? How?
-    // Don't forget the index telling us where the unprocessed data starts
-    // That way we don't have to flush the string every time we read from it
+
+    std::string _read_buffer;
+    size_t      _read_index;
+    std::string _write_buffer;
+    size_t      _write_index;
 };
 
 #endif

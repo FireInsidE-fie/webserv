@@ -7,7 +7,14 @@
 #include "config.hpp"
 
 Connection::Connection(const Config_Server* const config, int socket)
-    : _config(config), _socket(socket) {
+    : _config(config),
+      _request(),
+      _response(),
+      _socket(socket),
+      _read_buffer(),
+      _read_index(0),
+      _write_buffer(),
+      _write_index(0) {
     assert(config && "Config_Server pointer");
     assert(socket > 2 && "Valid Socket Number");
 }
