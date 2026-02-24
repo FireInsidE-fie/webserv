@@ -12,6 +12,8 @@ public:
 
     const Request&  request() const;
     const Response& response() const;
+    const char*     read_data() const;
+    const char*     write_data() const;
 
     // TODO Send and receive functions
 

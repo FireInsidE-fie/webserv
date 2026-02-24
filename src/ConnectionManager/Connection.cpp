@@ -29,6 +29,19 @@ const Response& Connection::response() const {
     return _response;
 }
 
+/**
+ * @brief Returns a pointer to the first unprocessed char in the read buffer.
+ */
+const char* Connection::read_data() const {
+    return _read_buffer.c_str() + _read_index;
+}
+
+/**
+ * @brief Returns a pointer to the first unprocessed char in the write buffer.
+ */
+const char* Connection::write_data() const {
+    return _write_buffer.c_str() + _write_index;
+}
 void Connection::set_config(const Config_Server* const config) {
     assert(config && "Config_Server pointer");
 
