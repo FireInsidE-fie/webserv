@@ -39,4 +39,6 @@ typedef struct Config {
     File_Path     error_log;
 } Config;
 
+Config mock_config();
+
 #endif

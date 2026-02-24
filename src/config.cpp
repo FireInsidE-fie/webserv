@@ -2,6 +2,11 @@
 
 #include <cstring>
 
+/**
+ * @brief Create an example configuration for testing.
+ *
+ * @note Will be removed when parsing is functional.
+ */
 Config mock_config() {
     Config          conf;
     Config_Server   server;
