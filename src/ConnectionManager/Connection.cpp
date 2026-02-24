@@ -1,5 +1,8 @@
 #include "Connection.hpp"
 
+#include <sys/socket.h>
+#include <sys/types.h>
+
 #include <cassert>
 
 #include "Request.hpp"
@@ -48,6 +51,34 @@ const char* Connection::read_data() const {
 const char* Connection::write_data() const {
     return _write_buffer.c_str() + _write_index;
 }
+
+/**
+ * @brief Send a chunk of data in the write buffer through the connection's socket.
+ */
+size_t Connection::send_data() {
+    ssize_t sent_bytes = send(_socket, _write_buffer.c_str() + _write_index, SEND_SIZE, 0);
+
+    if (sent_bytes < 0) {
+        throw;
+        // TODO Log error
+    }
+
+    // We cast it to unsigned because at this point it has to be positive
+    return static_cast<size_t>(sent_bytes);
+}
+
+size_t Connection::receive_data() {
+    ssize_t received_bytes = recv(_socket, _working_read_buffer, RECV_SIZE, 0);
+
+    if (received_bytes < 0) {
+        throw;
+        // TODO Log error
+    }
+
+    // We cast it to unsigned because at this point it has to be positive
+    return static_cast<size_t>(received_bytes);
+}
+
 void Connection::set_config(const Config_Server* const config) {
     assert(config && "Config_Server pointer");
 

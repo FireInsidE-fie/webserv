@@ -20,7 +20,8 @@ public:
     const char*     read_data() const;
     const char*     write_data() const;
 
-    // TODO Send and receive functions
+    size_t send_data();
+    size_t receive_data();
 
     void set_config(const Config_Server* const);
 
