@@ -17,9 +17,15 @@ Connection::Connection(const Config_Server* const config, int socket)
       _write_index(0) {
     assert(config && "Config_Server pointer");
     assert(socket > 2 && "Valid Socket Number");
+
+    _working_read_buffer = new char[RECV_SIZE];
+    _working_write_buffer = new char[SEND_SIZE];
 }
 
-Connection::~Connection() {}
+Connection::~Connection() {
+    delete[] _working_read_buffer;
+    delete[] _working_write_buffer;
+}
 
 const Request& Connection::request() const {
     return _request;

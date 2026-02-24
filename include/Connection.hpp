@@ -5,6 +5,11 @@
 #include "Response.hpp"
 #include "config.hpp"
 
+// How much data we should receive from a socket at a time
+#define RECV_SIZE 1024
+// How much data we should send through a socket at a time
+#define SEND_SIZE 1024
+
 class Connection {
 public:
     Connection(const Config_Server* const, int socket);
@@ -27,8 +32,10 @@ private:
 
     int _socket;
 
+    char*       _working_read_buffer;
     std::string _read_buffer;
     size_t      _read_index;
+    char*       _working_write_buffer;
     std::string _write_buffer;
     size_t      _write_index;
 };
