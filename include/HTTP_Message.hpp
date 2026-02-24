@@ -11,14 +11,14 @@ public:
 
     virtual ~HTTP_Message();
 
-    virtual const std::string& body() const;
-    virtual header_iterator    header(const std::string&) const;
+    const std::string& body() const;
+    header_iterator    header(const std::string&) const;
 
-    virtual void set_header(const std::string&, const std::string&);
+    void set_header(const std::string&, const std::string&);
 
 private:
-    int                                     _major_version;
-    int                                     _minor_version;
+    // int                                     _major_version;
+    // int                                     _minor_version;
     std::multimap<std::string, std::string> _headers;
     std::string                             _body;
 };
