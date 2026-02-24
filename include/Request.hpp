@@ -22,10 +22,10 @@ public:
     ~Request();
 
 private:
+    const Config_Location& _config;
+
     HTTP_Method    _method;
     Status_Parsing _status;
-
-    const Config_Location& _config;
 };
 
 #endif

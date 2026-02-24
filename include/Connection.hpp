@@ -7,7 +7,7 @@
 
 class Connection {
 public:
-    Connection(const Config_Server& config, int socket);
+    Connection(const Config_Server&, int socket);
     ~Connection();
 
     const Request&  request() const;
@@ -16,9 +16,10 @@ public:
     // TODO Send and receive functions
 
 private:
-    Request              _request;
-    Response             _response;
     const Config_Server& _config;
+
+    Request  _request;
+    Response _response;
 
     int _socket;
     // TODO Read and write buffers? How?
