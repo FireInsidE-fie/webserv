@@ -10,8 +10,8 @@ public:
     Connection(const Config_Server& config, int socket);
     ~Connection();
 
-    const Response& response() const;
     const Request&  request() const;
+    const Response& response() const;
 
     // TODO Send and receive functions
 
