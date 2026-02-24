@@ -11,6 +11,12 @@ public:
     Response();
     ~Response();
 
+    HTTP_Code          code() const;
+    const std::string& response_string() const;
+
+    void set_code(HTTP_Code);
+    void set_response_string(const std::string&);
+
     std::string serialize() const;
 
 private:
