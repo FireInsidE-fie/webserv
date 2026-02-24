@@ -1,5 +1,7 @@
 #include "HTTP_Message.hpp"
 
+HTTP_Message::~HTTP_Message() {}
+
 const std::string& HTTP_Message::body() const {
     return _body;
 }
