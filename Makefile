@@ -48,6 +48,7 @@ $(NAME):		$(OBJS)
 clean:
 				@printf "\rCleaning object files"
 				@$(RM) $(RMFLAGS) $(OBJS)
+				@$(RM) $(RMFLAGS) $(OBJS:.o=.d)
 				@printf "\rObject files cleaned.\n"
 
 fclean:			clean
