@@ -3,7 +3,6 @@ CXX			=	c++
 CXXFLAGS	=	-Wall \
 				-Wextra \
 				-Wpedantic \
-				-Weffc++ \
 				-Wconversion \
 				-Wsign-conversion \
 				-Werror \
