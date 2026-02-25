@@ -9,6 +9,8 @@ public:
     // What the header getter will return, this makes it easier to iterate over duplicate headers
     typedef std::multimap<std::string, std::string>::const_iterator header_iterator;
 
+    int                major_version() const;
+    int                minor_version() const;
     const std::string& body() const;
     header_iterator    header(const std::string&) const;
 

@@ -4,6 +4,13 @@ const std::string& HTTP_Message::body() const {
     return _body;
 }
 
+int HTTP_Message::major_version() const {
+    return _major_version;
+}
+
+int HTTP_Message::minor_version() const {
+    return _minor_version;
+}
 /**
  * @brief Return an iterator to the first header with the name `header_name`.
  */
