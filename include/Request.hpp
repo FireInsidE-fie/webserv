@@ -14,6 +14,8 @@ class Request : public HTTP_Message {
 public:
     Request();
     Request(const Config_Location* const, HTTP_Method);
+    Request(const Request&);
+    const Request& operator=(const Request&);
     ~Request();
 
     HTTP_Method    method() const;

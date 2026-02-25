@@ -13,6 +13,8 @@
 class Connection {
 public:
     Connection(const Config_Server* const, int socket);
+    Connection(const Connection&);
+    const Connection& operator=(const Connection&);
     ~Connection();
 
     const Request&  request() const;

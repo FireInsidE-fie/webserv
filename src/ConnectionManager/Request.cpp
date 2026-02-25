@@ -11,6 +11,19 @@ Request::Request(const Config_Location* const config, HTTP_Method method)
     assert(config && "Config_Location pointer");
 }
 
+Request::Request(const Request& other)
+    : _config(other._config), _method(other._method), _status(other._status) {}
+
+const Request& Request::operator=(const Request& other) {
+    if (this == &other) return *this;
+
+    _config = other._config;
+    _method = other._method;
+    _status = other._status;
+
+    return *this;
+}
+
 Request::~Request() {}
 
 HTTP_Method Request::method() const {
