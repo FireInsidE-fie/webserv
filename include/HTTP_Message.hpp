@@ -14,12 +14,13 @@ public:
     const std::string& body() const;
     header_iterator    header(const std::string&) const;
 
+    void set_version(int major_version, int minor_version);
     void set_header(const std::string&, const std::string&);
     void append_body(const std::string&);
 
 private:
-    // int                                     _major_version;
-    // int                                     _minor_version;
+    int                                     _major_version;
+    int                                     _minor_version;
     std::multimap<std::string, std::string> _headers;
     std::string                             _body;
 };
