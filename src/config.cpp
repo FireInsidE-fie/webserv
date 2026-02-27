@@ -17,6 +17,11 @@ Config mock_config() {
 
     loc.redirect[301] = "index.html";
     loc.root = "./root";
+
+    loc.error_page[404] = "/errors/404.html";
+    loc.error_page[500] = "/errors/500.html";
+    loc.error_page[413] = "/errors/413.html";
+
     loc.index = "index.hml";
     loc.autoindex = true;
 
@@ -29,10 +34,6 @@ Config mock_config() {
     server.listen.sin_family = AF_INET;
     server.listen.sin_port = htons(8080);
     server.listen.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
-
-    server.error_page[404] = "/errors/404.html";
-    server.error_page[500] = "/errors/500.html";
-    server.error_page[413] = "/errors/413.html";
 
     server.timeout = 1000;
     server.client_max_body_size = 1024 * 1024;  // 1Mb
