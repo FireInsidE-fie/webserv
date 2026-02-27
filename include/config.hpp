@@ -22,7 +22,6 @@ typedef struct Config_Location {
     std::set<HTTP_Method>            allowed_methods;
     std::map<HTTP_Code, std::string> redirect;  // Redirect to a URL using a specific HTTP code
     File_Path                        root;
-    std::map<HTTP_Code, std::string> error_page;  // Error code to URI
     bool                             autoindex;
     File_Path                        index;
     File_Path                        upload_store;
@@ -30,10 +29,11 @@ typedef struct Config_Location {
 } Config_Location;
 
 typedef struct Config_Server {
-    struct sockaddr_in           listen;
-    unsigned int                 client_max_body_size;
-    size_t                       timeout;
-    std::vector<Config_Location> location;
+    struct sockaddr_in               listen;
+    std::map<HTTP_Code, std::string> error_page;  // Error code to URI
+    unsigned int                     client_max_body_size;
+    size_t                           timeout;
+    std::vector<Config_Location>     location;
 } Config_Server;
 
 typedef struct Config {
